@@ -8,6 +8,8 @@
 
 const NodeHelper = require('node_helper');
 const request = require('request');
+const moment = require('moment');
+const fs = require("fs");
 //const parser = require('xml2js').parseString;
 //const translate = require('@vitalets/google-translate-api');
 
@@ -35,11 +37,12 @@ module.exports = NodeHelper.create({
 
   collectData: function () {
     today = moment().format("DD/MM");
+    //console.log("Today: "+today);
     var fData = fs.readFileSync(this.calFile, "utf8");
     var cal = JSON.parse(fData);
-    console.log(JSON.stringify(cal));
+    //console.log(JSON.stringify(cal));
     var days = cal[today] || [];
-    sendSocketNotification("DAYS", days);
+    this.sendSocketNotification("DAYS", days);
   }
 
 });

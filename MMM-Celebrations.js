@@ -19,18 +19,18 @@ Module.register("MMM-Celebrations", {
         return ["MMM-Celebrations.css"];
     },
 
-     getTranslations: function() {
+     /*getTranslations: function() {
         return {
-            /*en: "translations/en.json",
+            en: "translations/en.json",
             de: "translations/de.json",
             es: "translations/es.json",
             fr: "translations/fr.json",
             zh_cn: "translations/zh_cn.json",
             nl: "translations/nl.json",
             nb: "translations/nb.json",
-            ar: "translations/ar.json"*/
+            ar: "translations/ar.json"
         };
-    },
+    },*/
 
     // Define start sequence.
     start: function() {
@@ -38,16 +38,13 @@ Module.register("MMM-Celebrations", {
         // Set locale.
         this.config.lang = this.config.lang || config.language;
         this.sendSocketNotification("CONFIG", this.config);
-
-        this.today = "";
-        this.scheduleUpdate();
     },
 
 
     getDom: function() {
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper ";
-        wrapper.style.maxWidth = this.config.width;
+        wrapper.style.width = this.config.width;
 
         if (!this.loaded) {
             wrapper.innerHTML = this.translate("Getting Celebrations");
@@ -55,9 +52,9 @@ Module.register("MMM-Celebrations", {
             return wrapper;
         }
 
-        var day = document.createElement("div");
-        day.className = "bright light";
         for (var i = 0; i < this.days.length; i ++) {
+          var day = document.createElement("div");
+          day.className = "bright light";
           day.innerHTML = this.days[i];
           wrapper.appendChild(day);
         }
@@ -67,6 +64,7 @@ Module.register("MMM-Celebrations", {
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "DAYS") {
+          this.loaded = true;
           this.days = payload;
           this.updateDom(this.config.animationSpeed);
         }
