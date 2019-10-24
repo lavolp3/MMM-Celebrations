@@ -8,12 +8,15 @@ Module.register("MMM-Celebrations", {
 
     // Module config defaults.
     defaults: {
-        updateInterval: 60 * 60 * 1000,   // every 60 minutes
+        updateInterval: 20 * 1000,   // 60 seconds
         animationSpeed: 10,
         header: "HEUTE IST:",
         //initialLoadDelay: 875, // 0 seconds delay
-        fadeSpeed: 7
+        fadeSpeed: 7,
     },
+
+    days: new Object({}),
+    counter: 0,
 
     getStyles: function() {
         return ["MMM-Celebrations.css"];
@@ -38,12 +41,17 @@ Module.register("MMM-Celebrations", {
         // Set locale.
         this.config.lang = this.config.lang || config.language;
         this.sendSocketNotification("CONFIG", this.config);
+        var self = this;
+        setInterval(() => {
+          self.updateDom();
+          self.counter = (self.counter < self.days.length-1) ? self.counter + 1 : 0;
+        }, self.config.updateInterval);
     },
 
 
     getDom: function() {
         var wrapper = document.createElement("div");
-        wrapper.className = "wrapper ";
+        wrapper.className = "wrapper";
         wrapper.style.width = this.config.width;
 
         if (!this.loaded) {
@@ -54,16 +62,22 @@ Module.register("MMM-Celebrations", {
 
         for (var i = 0; i < this.days.length; i ++) {
           var day = document.createElement("div");
-          day.className = "bright light";
-          day.innerHTML = this.days[i];
+          day.className = "bright light small cday";
+          day.innerHTML = this.days[i].title;
           wrapper.appendChild(day);
+          if (i == this.counter) {
+            descr = document.createElement("div");
+            descr.className = "descr xsmall";
+            descr.innerHTML = this.days[i].text;
+            wrapper.appendChild(descr);
+          }
         }
         return wrapper;
     },
 
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === "DAYS") {
+        if (notification === "CELEBRATIONS") {
           this.loaded = true;
           this.days = payload;
           this.updateDom(this.config.animationSpeed);

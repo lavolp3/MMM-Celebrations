@@ -8,9 +8,9 @@
 
 const NodeHelper = require('node_helper');
 const request = require('request');
-const moment = require('moment');
-const fs = require("fs");
-//const parser = require('xml2js').parseString;
+const cheerio = require('cheerio');
+//const moment = require('moment');
+//const fs = require("fs");
 //const translate = require('@vitalets/google-translate-api');
 
 module.exports = NodeHelper.create({
@@ -19,10 +19,6 @@ module.exports = NodeHelper.create({
       console.log("Starting module: " + this.name);
   },
 
-  calFile: `${__dirname}/feiertage.json`,
-
-
-
   //Subclass socketNotificationReceived received.
   socketNotificationReceived: function(notification, payload) {
     if (notification === 'CONFIG') {
@@ -30,19 +26,28 @@ module.exports = NodeHelper.create({
         this.collectData();
         self = this;
         setInterval(function () {
-            self.collectData();
-        }, payload.updateInterval);
+            if (moment().hour() == 0 && moment().minute() < 10) { self.collectData(); }   // repeat only once a day!
+        }, 10 * 60 * 1000);
     }
   },
 
   collectData: function () {
-    today = moment().format("DD/MM");
-    //console.log("Today: "+today);
-    var fData = fs.readFileSync(this.calFile, "utf8");
-    var cal = JSON.parse(fData);
-    //console.log(JSON.stringify(cal));
-    var days = cal[today] || [];
-    this.sendSocketNotification("DAYS", days);
+    var day, descr;
+    var celebrations = new Array();
+    const url = "http://welcher-tag-ist-heute.org/";
+    request(url, function (error, response, body) {
+			var $ = cheerio.load(body);
+			$('.slider .slides .inner a').each(function(i, elm) {
+        day = $('h2', elm).text().replace(/\t|\n/g,"");
+        descr = $('p', elm).text().replace(/\t|\n/g,"");
+        celebrations.push({
+          title: day,
+          text: descr
+        });
+      });
+      console.log(celebrations);
+      self.sendSocketNotification("CELEBRATIONS", celebrations);
+		});
   }
 
 });
