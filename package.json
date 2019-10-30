@@ -1,0 +1,22 @@
+{
+  "name": "mmm-celebrations",
+  "version": "1.0.0",
+  "description": "A Magic Mirror modules displaying current-day celebrations. Based on a collection on the german website \"welcher-tag-ist-heute.org\"",
+  "main": "MMM-Celebrations.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lavolp3/MMM-Celebrations.git"
+  },
+  "author": "Dirk Kovert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lavolp3/MMM-Celebrations/issues"
+  },
+  "homepage": "https://github.com/lavolp3/MMM-Celebrations#readme",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^3.0.0"
+  }
+}

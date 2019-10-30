@@ -11,6 +11,7 @@ Module.register("MMM-Celebrations", {
         updateInterval: 20 * 1000,   // 60 seconds
         animationSpeed: 10,
         header: "HEUTE IST:",
+        language: 'en',
         //initialLoadDelay: 875, // 0 seconds delay
         fadeSpeed: 7,
     },
