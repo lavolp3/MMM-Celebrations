@@ -73,6 +73,10 @@ Module.register("MMM-Celebrations", {
             wrapper.appendChild(descr);
           }
         }
+        footer = document.createElement("div");
+        footer.className = "footer xsmall dimmed";
+        footer.innerHTML = "Daten \u00A9 welcher-tag-ist-heute.org";
+        wrapper.appendChild(footer);
         return wrapper;
     },
 
