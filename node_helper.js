@@ -8,11 +8,9 @@
 
 const NodeHelper = require('node_helper');
 const request = require('request');
-const translate = require('@vitalets/google-translate-api');
+//const translate = require('@vitalets/google-translate-api');
 const cheerio = require('cheerio');
 const moment = require('moment');
-//const fs = require("fs");
-//const translate = require('@vitalets/google-translate-api');
 
 module.exports = NodeHelper.create({
 
