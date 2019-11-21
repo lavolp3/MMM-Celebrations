@@ -1,7 +1,8 @@
 # MMM-Celebrations
-A [MagicMirror](https://github.com/MichMich/MagicMirror) module to display today's celebrations. 
-Currently only available in German!
-Data is being taken from the page [welcher-tag-ist-heute.org](http://welcher-tag-ist-heute.org)
+A [MagicMirror](https://github.com/MichMich/MagicMirror) module to display today's celebrations.\n
+Currently only available in German!\n
+The module will revolve descriptions for the celebrations.\n
+Data is being fetched from the page [welcher-tag-ist-heute.org](http://welcher-tag-ist-heute.org)
 
 
 ![Alt text](/screenshot.jpg)
@@ -9,11 +10,7 @@ Data is being taken from the page [welcher-tag-ist-heute.org](http://welcher-tag
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/lavolp3/MMM-Celebrations.git`.
 
-Yes, that's it.
-
-## INstallation
-
-To use this module, add it to the modules array in the `config/config.js` file:
+2. Add the module to the modules array in the `config/config.js` file:
 ````javascript
 modules: [
 	{
