@@ -4,7 +4,7 @@ Currently only available in German!
 Data is being taken from the page [welcher-tag-ist-heute.org](http://welcher-tag-ist-heute.org)
 
 
-![Alt text](/MMM-Wunderlist-Enhanced.png?raw=true "Groupings")
+![Alt text](/screenshot.jpg)
 
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/lavolp3/MMM-Celebrations.git`.
