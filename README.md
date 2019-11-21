@@ -1,10 +1,7 @@
 # MMM-Celebrations
-A [MagicMirror](https://github.com/MichMich/MagicMirror) module to display today's celebrations.
-
-Currently only available in German!
-
-The module will revolve descriptions for the celebrations.
-
+A [MagicMirror](https://github.com/MichMich/MagicMirror) module to display today's celebrations.  
+Currently only available in German!  
+The module will revolve descriptions for the celebrations.  
 Data is being fetched from the page [welcher-tag-ist-heute.org](http://welcher-tag-ist-heute.org)
 
 
