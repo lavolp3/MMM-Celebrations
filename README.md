@@ -12,16 +12,14 @@ Data is being fetched from the page [welcher-tag-ist-heute.org](http://welcher-t
 
 2. Add the module to the modules array in the `config/config.js` file:
 ````javascript
-modules: [
 	{
-    module: 'MMM-Celebrations',
+		module: 'MMM-Celebrations',
 		position: 'top_left',	// This can be any of the regions. Best results in left or right regions.
 		header: 'Heute ist:', // This is optional
 		config: {
 			// You don't need any configuration options currently
 		}
-	}
-]
+	},
 ````
 
 That's it!
