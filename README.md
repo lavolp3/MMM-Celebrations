@@ -10,6 +10,13 @@ Data is being fetched from the page [welcher-tag-ist-heute.org](http://welcher-t
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/lavolp3/MMM-Celebrations.git`.
 
+2. Move into your module folder and execute npm install:
+```javascript
+cd MMM-Celebrations
+npm install
+```
+
+
 2. Add the module to the modules array in the `config/config.js` file:
 ````javascript
 	{
@@ -30,7 +37,7 @@ Nothing to configure yet.
 
 
 <table width="100%">
-	<thead>		
+	<thead>
 	</thead>
 	<tbody>
 	</tbody>
